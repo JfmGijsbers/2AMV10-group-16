@@ -140,6 +140,7 @@ class Classifier:
         xvals = cross_validate(self.rf, self.X, self.y, return_train_score=True, n_jobs=-1)
         return xvals['train_score'], xvals['test_score']
 
+
     def feature_importance(self, nr_images=10, nr_rows=2):
         """
             Plot graphs with images and importances
@@ -149,6 +150,7 @@ class Classifier:
         """
         fig, ax = plt.subplots(nr_images, nr_rows)
         pass
+
 
     def misclassifications(self):
         """
