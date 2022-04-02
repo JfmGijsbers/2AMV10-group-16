@@ -129,3 +129,17 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+*.zip
+
+*.xml
+
+.idea/sonarlint/issuestore/8/e/
+
+.idea/sonarlint/issuestore/9/1/
+
+.idea/sonarlint/issuestore/
+
+*.iml
+
+.DS_Store
