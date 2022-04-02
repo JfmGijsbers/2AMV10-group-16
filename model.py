@@ -43,8 +43,8 @@ class Classifier:
             Splits the data into a train and a test set.
         """
         self.X, self.y, self.labels = read_data()
-        #enc = OneHotEncoder(sparse=False, handle_unknown='ignore')
-        #self.X = enc.fit_transform(self.X, self.y)
+        # enc = OneHotEncoder(sparse=False, handle_unknown='ignore')
+        # self.X = enc.fit_transform(self.X, self.y)
         self.X_train, self.X_test, self.y_train, self.y_test = train_test_split(self.X, self.y, test_size=0.2)
         self.X_train, self.X_val, self.y_train, self.y_val = train_test_split(self.X_train, self.y_train, test_size=0.25)
         print(f"Shape of training image: {self.X_train[0].shape}")
@@ -54,7 +54,7 @@ class Classifier:
             Shows 10 random images from the dataset
         """
         def plot_images(X, y, grayscale=False, display_test=False):
-            fig, axes = plt.subplots(1, len(X), figsize=(15,30))
+            fig, axes = plt.subplots(1, len(X), figsize=(15, 30))
             for n in range(len(X)):
                 if grayscale:
                     axes[n].imshow(X[n], cmap='gray')
@@ -68,7 +68,7 @@ class Classifier:
                 axes[n].set_xticks(()), axes[n].set_yticks(())
             plt.show()
 
-        images = [randint(0,len(self.X_train)-1) for i in range(5)]
+        images = [randint(0, len(self.X_train)-1) for i in range(5)]
         X_random = [self.X_train[i] for i in images]
         y_random = [self.y_train[i] for i in images]
         plot_images(X_random, y_random)
