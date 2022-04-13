@@ -13,6 +13,7 @@
 
 <script>
 export default {
+    name: 'vue-table',
     props: {
         icon: String,
         title: String,
