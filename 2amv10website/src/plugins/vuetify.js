@@ -1,12 +1,10 @@
-// src/plugins/vuetify.js
-
-import Vue from 'vue'
-import Vuetify from 'vuetify'
-import 'vuetify/dist/vuetify.min.css'
+// Styles
 import '@mdi/font/css/materialdesignicons.css'
+import 'vuetify/styles'
 
-Vue.use(Vuetify)
+// Vuetify
+import { createVuetify } from 'vuetify'
 
-const opts = {}
-
-export default new Vuetify(opts)
+export default createVuetify(
+  // https://vuetifyjs.com/en/introduction/why-vuetify/#feature-guides
+)

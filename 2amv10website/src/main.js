@@ -1,18 +1,42 @@
-// The Vue build version to load with the `import` command
-// (runtime-only or standalone) has been set in webpack.base.conf with an alias.
-import Vue from 'vue'
-import App from './App'
-Vue.config.productionTip = false;
-import vuetify from '@/plugins/vuetify' // path to vuetify export
+import { createApp } from 'vue'
+import App from './App.vue'
+import vuetify from './plugins/vuetify'
+import { loadFonts } from './plugins/webfontloader'
+// import * as VueRouter from 'vue-router';
+import { createRouter, createWebHistory } from 'vue-router'
+import VueApexCharts from "vue3-apexcharts";
+import VNetworkGraph from "v-network-graph"
+import "v-network-graph/lib/style.css"
 
-import VueApexCharts from 'vue-apexcharts'
-Vue.use(VueApexCharts)
+import Analyst from './views/analyst.vue';
+import Profiler from './views/profiler.vue';
 
-Vue.component('apexchart', VueApexCharts)
-/* eslint-disable no-new */
-new Vue({
-    vuetify,
-  el: '#app',
-  components: { App },
-  template: '<App/>'
+loadFonts()
+
+const routes = [
+    {
+        path: '/',
+        name: 'home',
+        component: Profiler,
+    },
+    {
+        path: '/analyst',
+        name: 'analyst',
+        component: Analyst,
+    }
+]
+
+
+const router = createRouter({
+    // mode: 'history',
+    history: createWebHistory(),
+    props: true,
+    routes: routes
 })
+
+createApp(App)
+    .use(router)
+    .use(vuetify)
+    .use(VueApexCharts)
+    .use(VNetworkGraph)
+    .mount('#app');

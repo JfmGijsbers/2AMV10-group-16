@@ -6,6 +6,7 @@
 
 <script>
 export default {
+    name: 'vue-scatter',
     data() {
         return {
             series: [{
@@ -29,6 +30,9 @@ export default {
                 enabled: true,
                 type: 'xy'
               }
+            },
+            title: {
+            text: 'Item ownership scatter'
             },
             xaxis: {
               tickAmount: 10,
