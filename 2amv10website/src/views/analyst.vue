@@ -6,23 +6,16 @@
             </v-col>
             <v-col cols="6">
                 <img :src="imgSrc" alt="">
+                <img :src="require('@/assets/misclassifications(1).jpeg')" alt="">
+                <img :src="require('@/assets/misclassifications(2).jpeg')" alt="">
             </v-col>
         </v-row>
         <v-row>
             <v-col cols="12">
                 <h4>Filter activations</h4>
             </v-col>
-            <v-col cols="3">
-                <img class="activation-image" :src="require('@/assets/activation1.jpeg')" alt="">
-            </v-col>
-            <v-col cols="3">
-                <img class="activation-image" :src="require('@/assets/activation2.jpeg')" alt="">
-            </v-col>
-            <v-col cols="3">
-                <img class="activation-image" :src="require('@/assets/activation3.jpeg')" alt="">
-            </v-col>
-            <v-col cols="3">
-                <img class="activation-image" :src="require('@/assets/activation4.jpeg')" alt="">
+            <v-col cols="3" v-for="index in 12" :key="index">
+                <img class="activation-image" :src="require('@/assets/activations' + (index-1) + '.jpeg')" alt="">
             </v-col>
         </v-row>
     </v-container>
