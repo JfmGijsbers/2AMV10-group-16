@@ -1,21 +1,35 @@
 <template>
 <div class="example">
-  <apexchart width="500" height="300" type="heatmap" :options="chartOptions" :series="series"></apexchart>
+  <apexchart width="500" height="500" type="heatmap" :options="chartOptions" :series="series"></apexchart>
 </div>
 </template>
 
 <script>
+import heatmapData from '../json/cm.json';
 export default {
   name: 'HeatmapExample',
+  created() {
+      this.convertData();
+  },
   data: function() {
     return {
+      data: heatmapData,
       chartOptions: {
-        // dataLabels: {
-        //   enabled: false
-        // },
         colors: ["#008FFB"],
         xaxis: {
           type: 'category',
+          categories: [],
+          title: {
+              text: 'Predicted'
+          },
+          labels: {
+              rotate: -70
+          }
+        },
+        yaxis: {
+            title: {
+                text: 'Actual'
+            }
         },
         title: {
           text: 'Prediction heatmap'
@@ -27,86 +41,29 @@ export default {
             }
         },
       },
-      series: [{
-          name: 'Metric1',
-          data: this.generateData(20, {
-            min: 0,
-            max: 90
-          })
-        },
-        {
-          name: 'Metric2',
-          data: this.generateData(20, {
-            min: 0,
-            max: 90
-          })
-        },
-        {
-          name: 'Metric3',
-          data: this.generateData(20, {
-            min: 0,
-            max: 90
-          })
-        },
-        {
-          name: 'Metric4',
-          data: this.generateData(20, {
-            min: 0,
-            max: 90
-          })
-        },
-        {
-          name: 'Metric5',
-          data: this.generateData(20, {
-            min: 0,
-            max: 90
-          })
-        },
-        {
-          name: 'Metric6',
-          data: this.generateData(20, {
-            min: 0,
-            max: 90
-          })
-        },
-        {
-          name: 'Metric7',
-          data: this.generateData(20, {
-            min: 0,
-            max: 90
-          })
-        },
-        {
-          name: 'Metric8',
-          data: this.generateData(20, {
-            min: 0,
-            max: 90
-          })
-        },
-        {
-          name: 'Metric9',
-          data: this.generateData(20, {
-            min: 0,
-            max: 90
-          })
-        }
-      ],
+      series: [],
+      keys: []
     }
   },
   methods: {
-    generateData(count, yrange) {
-      var i = 0;
-      var series = [];
-      while (i < count) {
-        var x = (i + 1).toString();
-        var y = Math.floor(Math.random() * (yrange.max - yrange.min + 1)) + yrange.min;
-        series.push({
-          x: x,
-          y: y
-        });
-        i++;
-      }
-      return series;
+    convertData() {
+        let data = JSON.parse(JSON.stringify(this.data));
+        let series = [];
+        let keys = Object.keys(data);
+        for (const item of Object.entries(data)) {            
+            let cat_series = [];
+            for (let i = 0; i < keys.length; i++) {
+                cat_series.push({
+                    x: keys[i],
+                    y: item[1][i]
+                })
+            }
+            series.unshift({
+                name: item[0],
+                data: cat_series
+            });
+        }
+        this.series = series
     }
   }
 }

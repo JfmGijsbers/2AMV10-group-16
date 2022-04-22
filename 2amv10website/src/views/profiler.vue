@@ -6,10 +6,13 @@
             </v-col>
         </v-row>
         <v-row>
-                <!-- <Chord/> -->
-                <v-col cols="6"><Chord/></v-col>
-                <v-col cols="6"><Network/></v-col>
+            <v-col cols="6"><Network/></v-col>
+            <v-col cols="6"><Chord/></v-col>
         </v-row>
+        <v-row>
+                <!-- <Chord/> -->
+        </v-row>
+
     </v-container>
 </template>
 

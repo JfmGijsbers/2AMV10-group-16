@@ -1,37 +1,39 @@
 <template>
     <v-container>
-        <v-row>
-            <v-col v-for="card in cards" :key="card.title" class="cards pl-2 pr-2" cols="3">
-                <card :icon="card.icon" :title="card.title" :value="card.value"/>
-            </v-col>
-        </v-row>
         <v-row class="mt-4">
             <v-col cols="6">
                 <Heatmap/>
             </v-col>
             <v-col cols="6">
                 <img :src="imgSrc" alt="">
-                <img :src="imgSrc" alt="">
             </v-col>
         </v-row>
-        <!-- <v-row>
-            <v-col cols="6">
+        <v-row>
+            <v-col cols="12">
+                <h4>Filter activations</h4>
             </v-col>
-            <v-col cols="6">
-                <img :src="imgSrc" alt="">
+            <v-col cols="3">
+                <img class="activation-image" :src="require('@/assets/activation1.jpeg')" alt="">
             </v-col>
-        </v-row> -->
+            <v-col cols="3">
+                <img class="activation-image" :src="require('@/assets/activation2.jpeg')" alt="">
+            </v-col>
+            <v-col cols="3">
+                <img class="activation-image" :src="require('@/assets/activation3.jpeg')" alt="">
+            </v-col>
+            <v-col cols="3">
+                <img class="activation-image" :src="require('@/assets/activation4.jpeg')" alt="">
+            </v-col>
+        </v-row>
     </v-container>
 </template>
 
 <script>
-import Card from '../components/Card.vue';
 import Heatmap from '../components/Heatmap.vue';
 
 export default {
   name: 'App',
   components: {
-      Card,
       Heatmap,
   },
   data() {
@@ -67,5 +69,8 @@ export default {
 <style>
 .cards {
     padding: 50px 0 50px 0;
+}
+.activation-image {
+    width: 100%;
 }
 </style>
